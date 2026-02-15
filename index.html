@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeaderStack | The Academic Operating System</title>
+    <meta
+      name="description"
+      content="LeaderStack by Yashveer Singh Rajpoot. The Academic Operating System Built From Scratch. Structure, Clarity, and Control for Institutes."
+    />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="LeaderStack - Academic Operating System"
+    />
+    <meta
+      property="og:description"
+      content="Built by Yashveer Singh Rajpoot. Structure, Clarity, and Control for Institutes."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://leaderstack.com" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      brand: {
+                          bg: '#F9F8F4',       /* Beige Background */
+                          surface: '#FFFFFF',   /* White Cards */
+                          surfaceHighlight: '#F2F0EB',
+                          green: '#059669',     /* Emerald Primary */
+                          greenHover: '#047857',
+                          greenLight: '#D1FAE5',
+                          text: '#111827',      /* Charcoal/Black */
+                          muted: '#4B5563',     /* Dark Grey */
+                          border: '#E5E7EB'     /* Light Grey Border */
+                      }
+                  },
+                  fontFamily: {
+                      sans: ['Inter', 'sans-serif'],
+                      display: ['Plus Jakarta Sans', 'sans-serif'],
+                  },
+                  letterSpacing: {
+                      tightest: '-0.035em',
+                  },
+                  boxShadow: {
+                      'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                  }
+              }
+          }
+      }
+    </script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <style>
+      /* Custom Reset & Utilities */
+      :root {
+          color-scheme: light;
+      }
+      body {
+          background-color: #F9F8F4;
+          color: #111827;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+          width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+          background: #F9F8F4;
+      }
+      ::-webkit-scrollbar-thumb {
+          background: #D1D5DB;
+          border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+          background: #9CA3AF;
+      }
+
+      /* Utilities */
+      .glass-panel {
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .fade-enter {
+          opacity: 0;
+          transform: translateY(10px);
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-enter-active {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      /* Mobile Menu Transition */
+      #mobile-menu {
+          transition: transform 0.3s ease-in-out;
+      }
+
+      .logo-text {
+          letter-spacing: -0.05em;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans antialiased selection:bg-brand-green selection:text-white"
+  >
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-panel">
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <a
+          href="#"
+          class="text-lg font-semibold tracking-tight text-brand-text flex items-center gap-2 logo-text"
+        >
+          <div
+            class="w-8 h-8 bg-brand-green rounded-md flex items-center justify-center text-white"
+          >
+            <iconify-icon
+              icon="solar:layers-minimalistic-linear"
+              class="text-xl"
+            ></iconify-icon>
+          </div>
+          LeaderStack
+        </a>
+
+        <!-- Desktop Links -->
+        <div
+          class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-muted"
+        >
+          <a href="#philosophy" class="hover:text-brand-text transition-colors">
+            Philosophy
+          </a>
+          <a href="#features" class="hover:text-brand-text transition-colors">
+            Features
+          </a>
+          <a href="#pricing" class="hover:text-brand-text transition-colors">
+            Pricing
+          </a>
+          <a href="#manifesto" class="hover:text-brand-text transition-colors">
+            Manifesto
+          </a>
+          <a
+            href="https://leaderstack.vercel.app/login"
+            class="bg-brand-green text-white px-5 py-2 rounded-lg font-medium hover:bg-brand-greenHover transition-colors shadow-sm"
+          >
+            Get Access
+          </a>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button
+          id="menu-toggle"
+          class="md:hidden text-brand-text text-2xl focus:outline-none"
+        >
+          <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-brand-bg z-40 transform translate-x-full flex flex-col items-center justify-center gap-8 md:hidden"
+    >
+      <a href="#philosophy" class="text-2xl text-brand-muted mobile-link">
+        Philosophy
+      </a>
+      <a href="#features" class="text-2xl text-brand-muted mobile-link">
+        Features
+      </a>
+      <a href="#pricing" class="text-2xl text-brand-muted mobile-link">
+        Pricing
+      </a>
+      <a href="#manifesto" class="text-2xl text-brand-muted mobile-link">
+        Manifesto
+      </a>
+      <a
+        href="https://leaderstack.vercel.app/login"
+        class="text-xl bg-brand-green text-white px-8 py-3 rounded-lg font-medium"
+      >
+        Get Access
+      </a>
+      <button
+        id="menu-close"
+        class="absolute top-6 right-6 text-3xl text-brand-muted"
+      >
+        <iconify-icon icon="solar:close-circle-linear"></iconify-icon>
+      </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+      class="pt-32 pb-20 md:pt-48 md:pb-32 px-6 max-w-7xl mx-auto text-center"
+    >
+      <div class="max-w-4xl mx-auto space-y-8 fade-enter">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-xs font-medium text-brand-muted uppercase tracking-wider"
+        >
+          <span class="w-2 h-2 rounded-full bg-brand-green"></span>
+          Built by Yashveer Singh Rajpoot
+        </div>
+
+        <h1
+          class="text-4xl md:text-6xl font-semibold leading-tight tracking-tight text-brand-text"
+        >
+          The Academic Operating System
+          <br />
+          <span class="text-brand-green">Built From Scratch</span>
+        </h1>
+
+        <p
+          class="text-lg md:text-xl text-brand-muted leading-relaxed max-w-2xl mx-auto"
+        >
+          LeaderStack is a complete academic operations and performance
+          intelligence system designed for institutes that want control,
+          clarity, and accountability without automation chaos.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+          <a
+            href="https://leaderstack.vercel.app/login"
+            class="bg-brand-green text-white px-8 py-3.5 rounded-lg font-medium hover:bg-brand-greenHover transition-all flex items-center justify-center gap-2 shadow-soft"
+          >
+            Start System
+            <iconify-icon
+              icon="solar:arrow-right-linear"
+              class="text-lg"
+            ></iconify-icon>
+          </a>
+          <a
+            href="https://wa.me/919310572076"
+            target="_blank"
+            class="bg-white border border-brand-border text-brand-text px-8 py-3.5 rounded-lg font-medium hover:bg-brand-surfaceHighlight transition-all flex items-center justify-center gap-2 shadow-sm"
+          >
+            <iconify-icon
+              icon="solar:chat-round-dots-linear"
+              class="text-xl"
+            ></iconify-icon>
+            Get subscription
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Problem / Philosophy Section -->
+    <section
+      id="philosophy"
+      class="py-20 bg-brand-surfaceHighlight border-y border-brand-border"
+    >
+      <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
+        <div class="space-y-6">
+          <h2
+            class="text-3xl md:text-4xl font-semibold tracking-tight text-brand-text"
+          >
+            Why Education Fails
+          </h2>
+          <h3 class="text-xl text-brand-green font-medium">
+            It's Not Dedication. It's Structure.
+          </h3>
+        </div>
+
+        <div
+          class="space-y-6 text-brand-muted text-lg leading-relaxed text-left max-w-3xl mx-auto bg-brand-surface p-8 rounded-xl border border-brand-border shadow-sm"
+        >
+          <p>
+            Education does not fail because teachers lack dedication. It fails
+            because systems lack structure. It fails because data lives in
+            notebooks, scattered spreadsheets, WhatsApp chats, memory, and
+            guesswork.
+          </p>
+          <p>LeaderStack exists to solve that.</p>
+          <p>
+            It is not a learning app. It is not an AI content generator. It is
+            not a student social platform. It is a human-controlled academic
+            command center.
+          </p>
+          <p>
+            <strong>This is not a template product.</strong>
+            It is a system engineered from zero to be sell-ready,
+            authority-protected, and long-term stable. LeaderStack reflects the
+            mindset of its creator, Yashveer Singh Rajpoot, who believes that
+            technology should support discipline, not replace it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problems Grid -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-semibold tracking-tight text-brand-text">
+          The Invisible Problems
+        </h2>
+        <p class="mt-4 text-brand-muted">
+          Institutes grow, but processes remain manual.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Problem 1 -->
+        <div
+          class="bg-brand-surface border border-brand-border p-6 rounded-xl hover:border-brand-green/30 transition-colors shadow-soft"
+        >
+          <iconify-icon
+            icon="solar:calendar-date-linear"
+            class="text-3xl text-brand-green mb-4"
+          ></iconify-icon>
+          <h3 class="text-lg font-medium text-brand-text mb-2">History Lost</h3>
+          <p class="text-sm text-brand-muted">
+            Promotions overwrite history. Academic years overlap and get
+            confused.
+          </p>
+        </div>
+        <!-- Problem 2 -->
+        <div
+          class="bg-brand-surface border border-brand-border p-6 rounded-xl hover:border-brand-green/30 transition-colors shadow-soft"
+        >
+          <iconify-icon
+            icon="solar:graph-down-linear"
+            class="text-3xl text-brand-green mb-4"
+          ></iconify-icon>
+          <h3 class="text-lg font-medium text-brand-text mb-2">
+            Weakness Ignored
+          </h3>
+          <p class="text-sm text-brand-muted">
+            Weak students are identified too late. Rankings are influenced by
+            bias.
+          </p>
+        </div>
+        <!-- Problem 3 -->
+        <div
+          class="bg-brand-surface border border-brand-border p-6 rounded-xl hover:border-brand-green/30 transition-colors shadow-soft"
+        >
+          <iconify-icon
+            icon="solar:wallet-linear"
+            class="text-3xl text-brand-green mb-4"
+          ></iconify-icon>
+          <h3 class="text-lg font-medium text-brand-text mb-2">Fee Mess</h3>
+          <p class="text-sm text-brand-muted">
+            Fee tracking becomes messy. Administrative control becomes diluted.
+          </p>
+        </div>
+        <!-- Problem 4 -->
+        <div
+          class="bg-brand-surface border border-brand-border p-6 rounded-xl hover:border-brand-green/30 transition-colors shadow-soft"
+        >
+          <iconify-icon
+            icon="solar:user-hand-up-linear"
+            class="text-3xl text-brand-green mb-4"
+          ></iconify-icon>
+          <h3 class="text-lg font-medium text-brand-text mb-2">
+            Inconsistent Attendance
+          </h3>
+          <p class="text-sm text-brand-muted">
+            Attendance tracking becomes inconsistent and prone to errors.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Solution Core -->
+    <section class="py-24 bg-brand-surface border-y border-brand-border">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="space-y-8">
+            <h2 class="text-3xl font-semibold text-brand-text tracking-tight">
+              LeaderStack Does Something Different
+            </h2>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="mt-1 text-brand-green">
+                  <iconify-icon
+                    icon="solar:shield-check-linear"
+                    class="text-xl"
+                  ></iconify-icon>
+                </div>
+                <div>
+                  <h4 class="font-medium text-brand-text">
+                    It Protects Hierarchy
+                  </h4>
+                  <p class="text-sm text-brand-muted">
+                    Strict academic year isolation. History is never
+                    overwritten.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="mt-1 text-brand-green">
+                  <iconify-icon
+                    icon="solar:lock-keyhole-linear"
+                    class="text-xl"
+                  ></iconify-icon>
+                </div>
+                <div>
+                  <h4 class="font-medium text-brand-text">
+                    It Enforces Authority
+                  </h4>
+                  <p class="text-sm text-brand-muted">
+                    Superadmin cannot access academic data. Institutes are
+                    autonomous.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="mt-1 text-brand-green">
+                  <iconify-icon
+                    icon="solar:user-block-linear"
+                    class="text-xl"
+                  ></iconify-icon>
+                </div>
+                <div>
+                  <h4 class="font-medium text-brand-text">No Student Logins</h4>
+                  <p class="text-sm text-brand-muted">
+                    Students are records, not users. No social distractions.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="mt-1 text-brand-green">
+                  <iconify-icon
+                    icon="solar:sort-by-time-linear"
+                    class="text-xl"
+                  ></iconify-icon>
+                </div>
+                <div>
+                  <h4 class="font-medium text-brand-text">Isolation</h4>
+                  <p class="text-sm text-brand-muted">
+                    It separates identity from permission. Roles are locked.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-brand-border">
+              <p class="text-sm text-brand-muted italic">
+                "That philosophy was deliberately embedded by Yashveer Singh
+                Rajpoot while designing the core architecture."
+              </p>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="bg-brand-bg rounded-xl p-8 border border-brand-border shadow-soft"
+            >
+              <h3 class="text-lg font-medium text-brand-text mb-6 text-center">
+                The Hierarchy That Powers Everything
+              </h3>
+              <div class="space-y-4 max-w-xs mx-auto">
+                <div
+                  class="p-4 bg-brand-surface border border-brand-border rounded-lg text-center font-medium shadow-sm"
+                >
+                  Institute
+                </div>
+                <div class="flex justify-center">
+                  <iconify-icon
+                    icon="solar:arrow-down-linear"
+                    class="text-brand-muted"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="p-4 bg-brand-surface border border-brand-border rounded-lg text-center font-medium shadow-sm"
+                >
+                  Academic Year
+                </div>
+                <div class="flex justify-center">
+                  <iconify-icon
+                    icon="solar:arrow-down-linear"
+                    class="text-brand-muted"
+                  ></iconify-icon>
+                </div>
+                <div
+                  class="p-4 bg-brand-surface border border-brand-border rounded-lg text-center font-medium shadow-sm"
+                >
+                  Class Centric Workspace
+                </div>
+                <div class="flex justify-center">
+                  <iconify-icon
+                    icon="solar:arrow-down-linear"
+                    class="text-brand-muted"
+                  ></iconify-icon>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div
+                    class="p-3 bg-brand-surface border border-brand-border rounded-lg text-center text-sm text-brand-muted"
+                  >
+                    Students
+                  </div>
+                  <div
+                    class="p-3 bg-brand-surface border border-brand-border rounded-lg text-center text-sm text-brand-muted"
+                  >
+                    Activity
+                  </div>
+                </div>
+              </div>
+              <p class="text-xs text-center text-brand-muted mt-6">
+                Nothing breaks this chain.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Deep Dive -->
+    <section id="features" class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-semibold tracking-tight text-brand-text">
+          What LeaderStack Is
+        </h2>
+        <p class="mt-4 text-brand-muted">
+          A web-based academic ERP focused strictly on operational integrity.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Feature Card -->
+        <div
+          class="bg-brand-surface p-8 rounded-xl border border-brand-border hover:border-brand-green/50 transition-colors shadow-soft group"
+        >
+          <div
+            class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center mb-6 text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors"
+          >
+            <iconify-icon
+              icon="solar:key-minimalistic-linear"
+              class="text-2xl"
+            ></iconify-icon>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-3">
+            Auth Without Compromise
+          </h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Email and password only. No Google login. No social providers.
+            Identity proves who you are. Role mapping defines what you can do.
+          </p>
+        </div>
+        <!-- Feature Card -->
+        <div
+          class="bg-brand-surface p-8 rounded-xl border border-brand-border hover:border-brand-green/50 transition-colors shadow-soft group"
+        >
+          <div
+            class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center mb-6 text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors"
+          >
+            <iconify-icon
+              icon="solar:history-linear"
+              class="text-2xl"
+            ></iconify-icon>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-3">
+            Academic Year Isolation
+          </h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            When a class moves to 2026, history remains untouched. No
+            overwriting. No corruption. Academic history is sacred.
+          </p>
+        </div>
+        <!-- Feature Card -->
+        <div
+          class="bg-brand-surface p-8 rounded-xl border border-brand-border hover:border-brand-green/50 transition-colors shadow-soft group"
+        >
+          <div
+            class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center mb-6 text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors"
+          >
+            <iconify-icon
+              icon="solar:check-read-linear"
+              class="text-2xl"
+            ></iconify-icon>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-3">
+            Manual Attendance
+          </h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            LeaderStack does not auto-mark. Teachers check present or absent.
+            Attendance reflects real human control, not automated assumptions.
+          </p>
+        </div>
+        <!-- Feature Card -->
+        <div
+          class="bg-brand-surface p-8 rounded-xl border border-brand-border hover:border-brand-green/50 transition-colors shadow-soft group"
+        >
+          <div
+            class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center mb-6 text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors"
+          >
+            <iconify-icon
+              icon="solar:medal-star-linear"
+              class="text-2xl"
+            ></iconify-icon>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-3">
+            Pure Rankings
+          </h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Ranking is based only on percentage. No behavioral metrics. No
+            subjective fields. Simple. Transparent. 1st, 2nd, 3rd.
+          </p>
+        </div>
+        <!-- Feature Card -->
+        <div
+          class="bg-brand-surface p-8 rounded-xl border border-brand-border hover:border-brand-green/50 transition-colors shadow-soft group"
+        >
+          <div
+            class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center mb-6 text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors"
+          >
+            <iconify-icon
+              icon="solar:bell-linear"
+              class="text-2xl"
+            ></iconify-icon>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-3">
+            Fee &amp; Weakness Alerts
+          </h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Integrated alerts for due fees and performance dips. They simply
+            inform the teacher. LeaderStack respects human judgment.
+          </p>
+        </div>
+        <!-- Feature Card -->
+        <div
+          class="bg-brand-surface p-8 rounded-xl border border-brand-border hover:border-brand-green/50 transition-colors shadow-soft group"
+        >
+          <div
+            class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center mb-6 text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors"
+          >
+            <iconify-icon
+              icon="solar:database-linear"
+              class="text-2xl"
+            ></iconify-icon>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-3">
+            Data Integrity
+          </h3>
+          <p class="text-sm text-brand-muted leading-relaxed">
+            Deletion is permanent. No restore. No rollback. This enforces
+            responsibility and careful data management.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <div
+          class="inline-block bg-brand-surface border border-brand-border px-8 py-4 rounded-lg"
+        >
+          <h4 class="font-medium text-brand-text mb-2">
+            What It Does NOT Provide
+          </h4>
+          <div
+            class="flex flex-wrap justify-center gap-4 text-sm text-brand-muted"
+          >
+            <span class="flex items-center gap-1">
+              <iconify-icon
+                icon="solar:close-circle-linear"
+                class="text-red-500"
+              ></iconify-icon>
+              AI Decision Making
+            </span>
+            <span class="flex items-center gap-1">
+              <iconify-icon
+                icon="solar:close-circle-linear"
+                class="text-red-500"
+              ></iconify-icon>
+              Student Logins
+            </span>
+            <span class="flex items-center gap-1">
+              <iconify-icon
+                icon="solar:close-circle-linear"
+                class="text-red-500"
+              ></iconify-icon>
+              Social Tools
+            </span>
+            <span class="flex items-center gap-1">
+              <iconify-icon
+                icon="solar:close-circle-linear"
+                class="text-red-500"
+              ></iconify-icon>
+              Content Delivery
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section
+      id="pricing"
+      class="py-24 bg-brand-surfaceHighlight border-y border-brand-border"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-semibold tracking-tight text-brand-text">
+            Monetization Structure
+          </h2>
+          <p class="mt-4 text-brand-muted">
+            LeaderStack is not an expense. It is an operational upgrade.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Monthly -->
+          <div
+            class="bg-brand-surface border border-brand-border rounded-xl p-8 flex flex-col shadow-soft"
+          >
+            <h3 class="text-xl font-medium text-brand-text mb-2">Monthly</h3>
+            <p class="text-3xl font-bold text-brand-text mb-6">
+              ₹5,000
+              <span class="text-sm font-normal text-brand-muted">/mo</span>
+            </p>
+            <ul class="space-y-4 mb-8 text-brand-muted text-sm flex-1">
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Full Operational Control
+              </li>
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Unlimited Students
+              </li>
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Manual Attendance
+              </li>
+            </ul>
+            <button
+              class="w-full border border-brand-border text-brand-text py-3 rounded-lg font-medium hover:bg-brand-bg transition-colors"
+            >
+              Select Plan
+            </button>
+          </div>
+
+          <!-- 6 Months -->
+          <div
+            class="bg-brand-surface border-2 border-brand-green rounded-xl p-8 flex flex-col relative transform md:-translate-y-4 shadow-xl"
+          >
+            <div
+              class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-green text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide"
+            >
+              Structured Choice
+            </div>
+            <h3 class="text-xl font-medium text-brand-text mb-2">6 Months</h3>
+            <p class="text-3xl font-bold text-brand-text mb-6">₹10,000</p>
+            <ul class="space-y-4 mb-8 text-brand-muted text-sm flex-1">
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                All Monthly Features
+              </li>
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Academic Year Locked
+              </li>
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Priority Support
+              </li>
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Historical Data Preservation
+              </li>
+            </ul>
+            <a
+              href="https://leaderstack.vercel.app/login"
+              class="block w-full text-center bg-brand-green text-white py-3 rounded-lg font-semibold hover:bg-brand-greenHover transition-colors"
+            >
+              Select Plan
+            </a>
+          </div>
+
+          <!-- Yearly -->
+          <div
+            class="bg-brand-surface border border-brand-border rounded-xl p-8 flex flex-col shadow-soft"
+          >
+            <h3 class="text-xl font-medium text-brand-text mb-2">Yearly</h3>
+            <p class="text-3xl font-bold text-brand-text mb-6">₹15,000</p>
+            <ul class="space-y-4 mb-8 text-brand-muted text-sm flex-1">
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Long Term Operations
+              </li>
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Full Data Ownership
+              </li>
+              <li class="flex items-center gap-3">
+                <iconify-icon
+                  icon="solar:check-circle-linear"
+                  class="text-brand-green"
+                ></iconify-icon>
+                Professional Exports
+              </li>
+            </ul>
+            <button
+              class="w-full border border-brand-border text-brand-text py-3 rounded-lg font-medium hover:bg-brand-bg transition-colors"
+            >
+              Select Plan
+            </button>
+          </div>
+        </div>
+        <p class="text-center text-sm text-brand-muted mt-8">
+          Pricing reflects the value of operational clarity. Institutes that
+          struggle with disorganization lose more than this in inefficiency.
+        </p>
+      </div>
+    </section>
+
+    <!-- Target Audience / Trust -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+      <h2
+        class="text-3xl font-semibold tracking-tight text-center mb-12 text-brand-text"
+      >
+        Who LeaderStack Is For
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          class="p-6 bg-brand-surface border border-brand-border rounded-lg text-center"
+        >
+          <span class="font-medium text-brand-text">Coaching Institutes</span>
+        </div>
+        <div
+          class="p-6 bg-brand-surface border border-brand-border rounded-lg text-center"
+        >
+          <span class="font-medium text-brand-text">Private Academies</span>
+        </div>
+        <div
+          class="p-6 bg-brand-surface border border-brand-border rounded-lg text-center"
+        >
+          <span class="font-medium text-brand-text">Subject Tutors</span>
+        </div>
+        <div
+          class="p-6 bg-brand-surface border border-brand-border rounded-lg text-center"
+        >
+          <span class="font-medium text-brand-text">
+            Competitive Exam Centers
+          </span>
+        </div>
+        <div
+          class="p-6 bg-brand-surface border border-brand-border rounded-lg text-center"
+        >
+          <span class="font-medium text-brand-text">
+            Structured Learning Environments
+          </span>
+        </div>
+        <div
+          class="p-6 bg-brand-surface border border-brand-border rounded-lg text-center opacity-50"
+        >
+          <span class="font-medium text-brand-text decoration-line-through">
+            Casual Learners
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifesto / Final Vision -->
+    <section
+      id="manifesto"
+      class="py-24 px-6 max-w-4xl mx-auto border-t border-brand-border bg-white"
+    >
+      <div class="space-y-8 text-lg text-brand-muted leading-relaxed">
+        <h2 class="text-3xl font-semibold text-brand-text tracking-tight">
+          The Vision Behind LeaderStack
+        </h2>
+        <p>
+          LeaderStack is not an experiment. It was built with discipline. Every
+          rule was locked before coding. Every hierarchy defined before
+          implementation. Every role separated clearly.
+        </p>
+        <p>
+          <strong>Yashveer Singh Rajpoot</strong>
+          built LeaderStack not as a student project, but as a commercial
+          academic ERP ready to be sold and scaled. This seriousness defines the
+          product.
+        </p>
+        <p>
+          If you are a teacher or institute owner who wants structure instead of
+          chaos, clarity instead of confusion, and control instead of automation
+          overload, LeaderStack is designed for you.
+        </p>
+        <div class="flex items-center gap-4 pt-4">
+          <div class="h-px bg-brand-border flex-1"></div>
+          <div class="text-brand-green font-medium">
+            Built by Yashveer Singh Rajpoot
+          </div>
+          <div class="h-px bg-brand-border flex-1"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section
+      id="get-started"
+      class="py-32 px-6 text-center bg-brand-surfaceHighlight"
+    >
+      <h2
+        class="text-4xl md:text-5xl font-semibold text-brand-text tracking-tight mb-8"
+      >
+        Transform Your Institute
+      </h2>
+      <a
+        href="https://leaderstack.vercel.app/login"
+        class="inline-block bg-brand-green text-white text-lg px-10 py-4 rounded-lg font-medium hover:bg-brand-greenHover transition-all shadow-lg shadow-brand-green/20"
+      >
+        Get Started
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-bg border-t border-brand-border pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
+          <div>
+            <h4 class="text-brand-text font-medium mb-4">Product</h4>
+            <ul class="space-y-2 text-sm text-brand-muted">
+              <li><a href="#" class="hover:text-brand-green">Philosophy</a></li>
+              <li><a href="#" class="hover:text-brand-green">Pricing</a></li>
+              <li><a href="#" class="hover:text-brand-green">Features</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-brand-text font-medium mb-4">Company</h4>
+            <ul class="space-y-2 text-sm text-brand-muted">
+              <li>
+                <a href="#" class="hover:text-brand-green">
+                  About Yashveer Singh Rajpoot
+                </a>
+              </li>
+              <li><a href="#" class="hover:text-brand-green">Manifesto</a></li>
+              <li><a href="#" class="hover:text-brand-green">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-brand-text font-medium mb-4">Legal</h4>
+            <ul class="space-y-2 text-sm text-brand-muted">
+              <li>
+                <a href="#" class="hover:text-brand-green">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-brand-green">Terms of Service</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-brand-green">Data Security</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-brand-text font-medium mb-4">UI Philosophy</h4>
+            <ul class="space-y-2 text-sm text-brand-muted">
+              <li>Premium &amp; Calm</li>
+              <li>Structured</li>
+              <li>Desktop First</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="text-center text-sm text-brand-muted border-t border-brand-border pt-8"
+        >
+          © 2026 LeaderStack. Built by Yashveer Singh Rajpoot. Engineered for
+          academic integrity. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuClose = document.getElementById('menu-close');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function toggleMenu() {
+          const isHidden = mobileMenu.classList.contains('translate-x-full');
+          if (isHidden) {
+              mobileMenu.classList.remove('translate-x-full');
+          } else {
+              mobileMenu.classList.add('translate-x-full');
+          }
+      }
+
+      menuToggle.addEventListener('click', toggleMenu);
+      menuClose.addEventListener('click', toggleMenu);
+
+      mobileLinks.forEach(link => {
+          link.addEventListener('click', toggleMenu);
+      });
+
+      // Basic Scroll Animation
+      const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('fade-enter-active');
+                  observer.unobserve(entry.target);
+              }
+          });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-enter').forEach(el => {
+          observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
